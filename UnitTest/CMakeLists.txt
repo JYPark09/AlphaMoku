@@ -1,9 +1,24 @@
-# Target name
+﻿# Target name
 set(target UnitTest)
 
 # Sources
 file(GLOB_RECURSE sources ${CMAKE_CURRENT_SOURCE_DIR}/*.cc)
 
-# Build library
 add_executable(${target} ${sources})
-target_link_libraries(${target} PUBLIC gtest)
+
+set_target_properties(${target}
+	PROPERTIES
+	${DEFAULT_PROJECT_OPTIONS}
+)
+
+target_compile_options(${target}
+	PRIVATE
+	${DEFAULT_COMPILER_OPTIONS}
+)
+
+target_link_libraries(${target}
+	PRIVATE
+	${DEFAULT_LINKER_OPTIONS}
+	AlphaMoku
+	gtest
+)
