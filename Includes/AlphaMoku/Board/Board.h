@@ -26,13 +26,24 @@ struct BoardView
 class Board final
 {
  public:
-    Board(std::size_t size);
+    Board(std::size_t size, bool renju = false);
 
     void Clear();
+
+    std::size_t GetSize() const;
+
+    void SetRenju(bool renju);
+    bool IsRenju() const;
 
     bool IsValid(const Point& pt) const;
     bool IsOnBoard(const Point& pt) const;
     bool IsEmpty(const Point& pt) const;
+    bool CheckRule(const Point& pt) const;
+
+    StoneType CurrentPlayer() const;
+    StoneType OpponentPlayer() const;
+
+    StoneType At(const Point& pt) const;
 
     BoardView::Ptr MakeView() const;
 
@@ -46,6 +57,7 @@ class Board final
 
  private:
     std::size_t size_;
+    bool renju_;
 
     StoneType current_;
     std::vector<StoneType> board_;
