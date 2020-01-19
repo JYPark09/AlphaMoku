@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 3.8.2 FATAL_ERROR)
 # Declare Project
 project(AlphaMoku)
 
+# C++ standard
+set(CMAKE_CXX_STANDARD 17)
+
 # Set output directories
 set(DEFAULT_CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
