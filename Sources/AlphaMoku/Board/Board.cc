@@ -2,6 +2,13 @@
 
 namespace AlphaMoku
 {
+BoardView::BoardView(std::size_t _size, StoneType _current,
+                     const std::vector<StoneType>& _board)
+    : size(_size), current(_current), board(_board)
+{
+    // Do nothing
+}
+
 Board::Board(std::size_t size) : size_(size)
 {
     Clear();
@@ -27,5 +34,10 @@ bool Board::IsOnBoard(const Point& pt) const
 bool Board::IsEmpty(const Point& pt) const
 {
     return board_[p2i(pt)] == StoneType::NONE;
+}
+
+BoardView::Ptr Board::MakeView() const
+{
+    return std::make_unique<BoardView>(size_, current_, board_);
 }
 }  // namespace AlphaMoku
